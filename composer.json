@@ -1,0 +1,23 @@
+{
+    "require": {
+        "vlucas/phpdotenv": "^5.5",
+        "php-di/php-di": "^7.0",
+      "ext-pdo": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "controllers\\": "controllers/",
+            "models\\": "models/",
+            "views\\": "views/",
+            "migrations\\": "migrations/",
+            "runtime\\": "runtime/",
+            "bootstrap\\": "bootstrap/",
+            "dispatcher\\": "dispatcher/",
+            "Exceptions\\": "Exceptions/",
+            "interfaces\\": "interfaces/",
+            "middlewares\\": "middlewares/",
+            "configs\\container\\": "configs/container/",
+            "enums\\": "enums/"
+        }
+    }
+}
