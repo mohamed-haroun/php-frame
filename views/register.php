@@ -76,15 +76,15 @@ if (isset($_SESSION['user_register'])) {
                 </div>
             </div>
             <div class="mb-3">
-                <label for="user_password" class="form-label">Password</label>
+                <label for="pass" class="form-label">Password</label>
                 <input type="password"
-                       name="user_password"
+                       name="pass"
                        minlength="8"
                        maxlength="64"
-                       class="form-control <?php if (isset($errors))echo isset($errors['user_password'])? 'is-invalid' : 'is-valid'?>"
-                       id="user_password">
+                       class="form-control <?php if (isset($errors))echo isset($errors['pass'])? 'is-invalid' : 'is-valid'?>"
+                       id="pass">
                 <div class="invalid-feedback">
-                    <?php echo isset($errors['user_password'])?  $errors['user_password'][0]: 'looks Good'?>
+                    <?php echo isset($errors['pass'])?  $errors['pass'][0]: 'looks Good'?>
                 </div>
                 <div class="valid-feedback">
                     Accepted Password

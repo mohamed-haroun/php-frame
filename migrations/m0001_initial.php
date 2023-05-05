@@ -4,20 +4,21 @@ namespace migrations;
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use bootstrap\DB;
+use Doctrine\DBAL\Connection;
 use PDO;
 
 return new class
 {
 
-    private PDO $connection;
+    private Connection $connection;
     public function __construct()
     {
         $configs =  [
-            'host'      => $_ENV['DB_HOST'],
-            'user'      => $_ENV['DB_USER'],
-            'password'  => $_ENV['DB_PASSWORD'],
-            'database'  => $_ENV['DB_NAME'],
-            'driver'    => $_ENV['DRIVER'] ?? 'pdo_mysql'
+            'dbname'            => $_ENV['DB_NAME'],
+            'user'              => $_ENV['DB_USER'],
+            'password'          => $_ENV['DB_PASSWORD'],
+            'host'              => $_ENV['DB_HOST'],
+            'driver'            => $_ENV['DRIVER'],
         ];
 
         $this->connection = (new DB($configs))->connect();
@@ -26,7 +27,7 @@ return new class
 
     public function up()
     {
-        $this->connection->exec("
+        $this->connection->executeQuery("
                                 create table users(
                                 user_id int unsigned serial default value,
                                 first_name varchar(100) not null,
@@ -40,6 +41,6 @@ return new class
 
     public function down()
     {
-        $this->connection->exec("DROP TABLE users");
+        $this->connection->executeQuery("DROP TABLE users");
     }
 };

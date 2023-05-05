@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace configs\container;
+namespace bootstrap;
 use Exceptions\ContainerException;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;

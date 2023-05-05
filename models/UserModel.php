@@ -9,22 +9,22 @@ use PDOException;
 
 class UserModel extends Model
 {
-    public int $user_id;
+    public int $id;
     public string $first_name;
     public string $last_name;
     public string $email;
     public string $created_at;
-    public string $user_password;
+    public string|null $profile_pic;
+    public string $pass;
     public string $confirmPassword;
 
 
     public function getUser(string $email, string $password): static|string
     {
         $user = $this->isExist($email);
-
         if ($user) {
             $this->loadData($user);
-            if (password_verify($password, $this->user_password)) {
+            if (password_verify($password, $this->pass)) {
                 return $this;
             } else {
                 return "password";
@@ -39,24 +39,25 @@ class UserModel extends Model
         try {
             $connection = Application::dbConnect();
 
-            $query = "INSERT INTO users VALUES (null, :firstname, :lastname, :email, :password, :created_at)";
+            $query = "INSERT INTO users VALUES (null, :firstname, :lastname, :email, :password, :profile_pic,:created_at)";
 
             $stmt = $connection->prepare($query);
 
             $stmt->bindValue(":firstname", $this->first_name);
             $stmt->bindValue(":lastname", $this->last_name);
             $stmt->bindValue(":email", $this->email);
-            $stmt->bindValue(":password", password_hash($this->user_password, PASSWORD_BCRYPT, ['cost'=>12]));
+            $stmt->bindValue(":password", password_hash($this->pass, PASSWORD_BCRYPT, ['cost'=>12]));
             $stmt->bindValue(":created_at", (new DateTime())->format('Y-m-d H:i:s'));
+            $stmt->bindValue(":profile_pic", null);
 
-            $done = $stmt->execute();
+            $done = $stmt->executeQuery();
 
-            $this->user_password='';
+            $this->pass='';
             $this->confirmPassword='';
             $_SESSION['user'] = serialize($this);
             session_write_close();
 
-            return $done;
+            return (bool)$done;
         } catch (PDOException $exception) {
             echo $exception->getMessage();
         }
@@ -72,12 +73,12 @@ class UserModel extends Model
 
         $stmt->bindValue(':email', $email);
 
-        $stmt->execute();
+        $result = $stmt->executeQuery();
 
-        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+        $user = $result->fetchAssociative();
 
         if ($result) {
-            return $result;
+            return $user;
         } else {
             return false;
         }
@@ -91,8 +92,8 @@ class UserModel extends Model
             'first_name'         => [Rules::REQUIRED],
             'last_name'          => [Rules::REQUIRED],
             'email'              => [Rules::REQUIRED, Rules::EMAIL, [Rules::UNIQUE, 'field' => 'email']],
-            'user_password'      => [Rules::REQUIRED,[Rules::MIN, 'min' => 8],[Rules::MAX, 'max' => 64]],
-            'confirmPassword'    => [Rules::REQUIRED,[Rules::MATCH, 'match' => 'user_password']],
+            'pass'               => [Rules::REQUIRED,[Rules::MIN, 'min' => 8],[Rules::MAX, 'max' => 64]],
+            'confirmPassword'    => [Rules::REQUIRED,[Rules::MATCH, 'match' => 'pass']],
         ];
     }
 }

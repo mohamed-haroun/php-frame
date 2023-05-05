@@ -47,11 +47,9 @@ class AuthController extends Controller
         if ($this->request->getMethod() == 'post') {
             $data = $data['post'];
             $value = $this->userModel->getUser($data['email'], $data['password']);
-
             if ($value instanceof UserModel) {
                 $_SESSION['user'] = serialize($this->userModel);
-                $this->handlerMiddleware->setFlash('success', "Thanks for registration user " . $this->userModel->first_name);
-                $this->response->redirect('/profile');
+                $this->response->redirect('/dashboard');
             } else {
                 $_SESSION['data'] = $data;
                 if ($value=='password') {
@@ -73,9 +71,10 @@ class AuthController extends Controller
                 $this->response->redirect('/profile');
             }
         } else {
-            $this->userModel->user_password = '';
+            $this->userModel->pass = '';
             $this->userModel->confirmPassword = '';
             $_SESSION['user_register'] = serialize($this->userModel);
+            $this->handlerMiddleware->setFlash('success', "Thanks for registration user " . $this->userModel->first_name);
             $this->registerView();
         }
     }

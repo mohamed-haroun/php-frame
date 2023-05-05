@@ -2,8 +2,7 @@
 declare(strict_types=1);
 namespace bootstrap;
 
-use bootstrap\router\Router;
-use PDO;
+use Doctrine\DBAL\Connection;
 
 class Application
 {
@@ -19,8 +18,13 @@ class Application
         $this->router->resolve();
     }
 
-    public static function dbConnect(): PDO
+    public static function dbConnect(): Connection
     {
         return self::$db->connect();
+    }
+
+    public static function getDB():DB
+    {
+        return static::$db;
     }
 }

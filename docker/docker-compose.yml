@@ -3,22 +3,12 @@ version: '3.9'
 services:
   app:
     build:
-      context: ""
       dockerfile: Dockerfile
-      args:
-        USER_ID: '${WWWUSER:-1000}'
-        GROUP_ID: '${WWWGROUP:-1000}'
-        USER: '${USER:-whoami}'
     container_name: framework
     restart: always
-    working_dir: /var/www
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-    ports:
-      - "9003:9003"
+    working_dir: /framework
     volumes:
-      - ../:/var/www
-      - ./local.ini:/usr/local/etc/php/conf.d/local.ini
+      - ../:/framework
   nginx:
     image: nginx:1.23.4-alpine
     container_name: framework-nginx
@@ -26,7 +16,7 @@ services:
     ports:
       - "7000:7000"
     volumes:
-      - ../:/var/www
+      - ../:/framework
       - ./nginx:/etc/nginx/conf.d
   db:
     container_name: framework-db

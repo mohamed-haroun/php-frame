@@ -21,6 +21,7 @@ abstract class Model
     public function validateData(): bool
     {
         foreach ($this->rules() as $attribute => $rules) {
+
             $value = $this->{$attribute};
             foreach ($rules as $rule) {
                 $ruleName = $rule;

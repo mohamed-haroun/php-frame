@@ -1,7 +1,7 @@
 <?php
+
 use middlewares\SessionHandlerMiddleware;
 use dispatcher\Response;
-
 $session = new SessionHandlerMiddleware();
 
 

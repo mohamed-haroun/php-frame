@@ -2,7 +2,11 @@
     "require": {
         "vlucas/phpdotenv": "^5.5",
         "php-di/php-di": "^7.0",
-      "ext-pdo": "*"
+      "ext-pdo": "*",
+        "doctrine/dbal": "^3.6",
+        "doctrine/orm": "^2.14",
+        "symfony/yaml": "^5.4",
+        "symfony/cache": "^5.4"
     },
     "autoload": {
         "psr-4": {
@@ -16,7 +20,7 @@
             "Exceptions\\": "Exceptions/",
             "interfaces\\": "interfaces/",
             "middlewares\\": "middlewares/",
-            "configs\\container\\": "configs/container/",
+            "configs\\": "configs/",
             "enums\\": "enums/"
         }
     }

@@ -2,7 +2,11 @@
 declare(strict_types=1);
 namespace bootstrap;
 
-use PDO;
+use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\DriverManager;
+use Doctrine\DBAL\Result;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\ORMSetup;
 
 readonly class DB
 {
@@ -10,18 +14,19 @@ readonly class DB
     {
     }
 
-    public function connect(): PDO
+    public function connect(): Connection
     {
-        $pdo =  new PDO(
-            dsn: 'mysql:host=' . $this->configs['host'] . ';dbname=' . $this->configs['database'],
-            username: $this->configs['user'],
-            password: $this->configs['password']
-        );
+        return DriverManager::getConnection($this->configs);
+    }
 
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    public function entityManager(): EntityManager
+    {
+        $paths = [__DIR__ . '/../models'];
+        $isDevMode = false;
 
-        return $pdo;
-
+        $config = ORMSetup::createAttributeMetadataConfiguration($paths, $isDevMode);
+        $connection = DriverManager::getConnection($this->configs, $config);
+        return new EntityManager($connection, $config);
     }
 
     public function applyMigrations(): void
@@ -53,8 +58,8 @@ readonly class DB
 
     public function createMigrationsTable():void
     {
-        $this->connect()->exec(
-            "CREATE TABLE IF NOT EXISTS migrations(
+        $this->connect()->executeQuery(
+                    "CREATE TABLE IF NOT EXISTS migrations(
                         id INT AUTO_INCREMENT PRIMARY KEY ,
                         migration  VARCHAR(255) NOT NULL,
                         created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -64,17 +69,16 @@ readonly class DB
     public function getAppliedMigrations(): array
     {
         $stmt = $this->connect()->prepare("SELECT migration FROM migrations");
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_COLUMN);
+        $result = $stmt->executeQuery();
+        return $result->fetchFirstColumn();
     }
 
     public function saveMigrations(array $migrations): void
     {
         $str = implode(',', array_map(fn($mig) => "('$mig')", $migrations));
-        $stmt = $this->connect()->prepare("INSERT INTO migrations (migration) VALUES
-                                       $str");
+        $stmt = $this->connect()->prepare("INSERT INTO migrations (migration) VALUES $str");
 
-        $stmt->execute();
+        $stmt->executeQuery();
     }
 
 }

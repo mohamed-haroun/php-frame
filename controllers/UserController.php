@@ -18,7 +18,7 @@ class UserController extends Controller
     {
 
         $view = 'profile';
-        $layout = 'dashboard';
+        $layout = 'main';
         $args = [
             "{{page_title}}" => "Profile",
             "{{user}}" => $this->user->first_name ?? 'user'
@@ -30,6 +30,7 @@ class UserController extends Controller
     {
         unset($_SESSION['user']);
         unset($_SESSION['logged']);
+        unset($_SESSION['newShipment']);
         $this->response->redirect('/login');
     }
 }

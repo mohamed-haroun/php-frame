@@ -1,9 +1,10 @@
 <?php
 declare(strict_types=1);
 session_start();
+
 use bootstrap\Application;
+use bootstrap\Container;
 use bootstrap\DB;
-use configs\container\Container;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 

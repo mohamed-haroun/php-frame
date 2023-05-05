@@ -1,8 +1,7 @@
 <?php
 
-namespace bootstrap\router;
+namespace bootstrap;
 
-use configs\container\Container;
 use dispatcher\Request;
 use dispatcher\Response;
 
