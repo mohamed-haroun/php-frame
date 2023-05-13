@@ -81,4 +81,17 @@ readonly class DB
         $stmt->executeQuery();
     }
 
+    public function dumpData()
+    {
+
+        $dbhost = $this->configs['host'];
+        $dbuser = $this->configs['user'];
+        $dbpass = $this->configs['password'];
+        $dbname = $this->configs['dbname'];
+
+        $backup_file = $dbname . date("Y-m-d-H-i-s") . '.gz';
+        $command = "mysqldump --opt -h localhost:3307 -u $dbuser -p $dbpass ". "/var/www/html/elfath | gzip > $backup_file";
+
+    }
+
 }

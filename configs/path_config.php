@@ -10,4 +10,4 @@ const RESOURCES_PATH = __DIR__ . '/../resources/';
 
 const CONFIG_PATH = __DIR__ . '/../configs/';
 
-const POLICY_PATH = __DIR__ . '/../documents/policies/';
+const DOCS = __DIR__ . '/../documents/';

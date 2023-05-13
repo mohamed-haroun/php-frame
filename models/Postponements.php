@@ -21,8 +21,8 @@ class Postponements
     private \DateTime $delayDate;
     #[Column]
     private string $reason;
-    #[Column(name: 'shipment_id')]
-    private int $shipmentId;
+    #[Column(name: 'shipments_id')]
+    private int $shipmentsId;
 
     #[ManyToOne(inversedBy: 'postponements')]
     private Shipments $shipments;
@@ -56,12 +56,12 @@ class Postponements
 
     public function getShipmentId(): int
     {
-        return $this->shipmentId;
+        return $this->shipmentsId;
     }
 
     public function setShipmentId(int $shipmentId): Postponements
     {
-        $this->shipmentId = $shipmentId;
+        $this->shipmentsId = $shipmentId;
         return $this;
     }
 

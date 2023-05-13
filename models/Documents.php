@@ -21,8 +21,8 @@ class Documents
     private string $documentName;
     #[Column(name: 'upload_date', type: Types::DATETIME_MUTABLE)]
     private \DateTime $uploadDate;
-    #[Column(name: 'shipment_id')]
-    private int $shipmentId;
+    #[Column(name: 'shipments_id')]
+    private int $shipmentsId;
     #[ManyToOne(inversedBy: 'documents')]
     private Shipments $shipments;
 
@@ -54,14 +54,14 @@ class Documents
         return $this;
     }
 
-    public function getShipmentId(): int
+    public function getShipmentsId(): int
     {
-        return $this->shipmentId;
+        return $this->shipmentsId;
     }
 
-    public function setShipmentId(int $shipmentId): Documents
+    public function setShipmentsId(int $shipmentsId): Documents
     {
-        $this->shipmentId = $shipmentId;
+        $this->shipmentsId = $shipmentsId;
         return $this;
     }
 

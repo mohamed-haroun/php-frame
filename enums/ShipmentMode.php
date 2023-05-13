@@ -4,6 +4,6 @@ namespace enums;
 
 enum ShipmentMode: string
 {
-    case Import = 'import';
-    case Export = 'export';
+    case Import = 'Import';
+    case Export = 'Export';
 }

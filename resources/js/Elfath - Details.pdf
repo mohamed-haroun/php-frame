@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Elfath - Details</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../../resources/images/logo.png">
+    <link href="../../resources/css/all.min.css" rel="stylesheet">
+    <link href="../../resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../resources/css/style.css" rel="stylesheet">
+    <link href="../../resources/css/print.min.css" rel="stylesheet">
+    <link href="../../resources/css/datatables.min.css" rel="stylesheet">
+</head>
+
+<body>
+            <!--Main Navigation-->
+        <header>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#"><img src="../../resources/images/logo.png" class="logo ms-3" alt=""
+                            loading="lazy" /></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mb-2 ms-auto mb-lg-0">
+                            
+                                <li class="nav-item">
+                                    <a class="nav-link "
+                                        aria-current="page" href="/dashboard"><i class="fa-brands fa-buromobelexperte"></i>
+                                        Dashboard</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link "
+                                        href="/companies/overview"><i class="fa-solid fa-building"></i> Companies</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-success"
+                                        href="/shipments/overview"><i class="fa-solid fa-ship"></i> Shipments</a>
+                                </li>
+                                <li class="nav-item mx-5">
+                                    <form class="d-flex" role="search" method="get" action="/shipments/tracking">
+                                        <input class="form-control me-2" name="track" type="search"
+                                            placeholder="Tracking Number" aria-label="Search">
+                                        <button class="btn btn-outline-success" type="submit">Track</button>
+                                    </form>
+                                </li>
+                                                        <li class="nav-item dropdown">
+                                                                    <div class="dropdown">
+                                        <a class="nav-link dropdown-toggle me-3
+                                " role="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            Mohamed
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-end p-0">
+                                            <li><a class="dropdown-item "
+                                                    href="/user/profile">Profile <i class="fa-regular fa-user"></i></a></li>
+                                            <li><a class="dropdown-item "
+                                                    href="/user/settings">Settings <i class="fa-solid fa-user-gear"></i></a>
+                                            </li>
+                                            <li><a class="dropdown-item text-danger"
+                                                    href="/user/logout">Logout <i
+                                                        class="fa-solid fa-right-from-bracket"></i></a></li>
+                                        </ul>
+                                    </div>
+
+                                                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </nav>
+                <main>
+            <div class="container-fluid">
+                    <div id="liveAlertPlaceholder"></div>
+    <h4 class="text-secondary-emphasis bg-white mx-0 my-2 p-2 shadow fw-bold rounded" style="width: fit-content">
+        Orange Fresh Valencha and Olives Fresh    </h4>
+
+    <ul class="nav nav-tabs" id="ship-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="details-tab" data-bs-toggle="tab" data-bs-target="#details-tab-pane"
+                type="button" role="tab" aria-controls="details-tab-pane" aria-selected="true">DETAILS</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="documents-tab" data-bs-toggle="tab" data-bs-target="#documents-tab-pane"
+                type="button" role="tab" aria-controls="documents-tab-pane" aria-selected="false">DOCUMENTS</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button"
+                role="tab" aria-controls="contact-tab-pane" aria-selected="false">INVOICES</button>
+        </li>
+    </ul>
+    <div class="tab-content px-0" id="myTabContent">
+        <div class="tab-pane fade show active" id="details-tab-pane" role="tabpanel" aria-labelledby="details-tab"
+            tabindex="0">
+            <div class="mx-0 w-100 bg-white border-bottom">
+                <h6 class="py-3 ps-1 fw-bold text-center fs-5 text-info-emphasis">Shipment Details <i class="fa-solid fa-circle-info text-warning"></i></h6>
+            </div>
+            <div class="row gap-3 mx-auto my-3 ship-info">
+                <div class="col-md-4 bg-white border p-4 pt-3 rounded-4 shadow">
+                    <h6 class="p-2 fw-bold text-info-emphasis"><i class="fa-solid fa-location-dot text-success"></i>&nbsp;
+                        ship From
+                    </h6>
+                    <div>
+                        <p class="px-2 fw-bold"><span style="border-bottom: 2px dotted darkred"
+                                title="Port of loading">POL</span>:
+                            Port Foad Egypt                        </p>
+                        <p class="mb-0 px-2"><span class="fw-bold text-success">Shipper: </span>
+                            Elfath for export and import                        </p>
+                        <p class="mb-0 px-2"><span class="fw-bold text-success">Address: </span>
+                            Netma/Kom Hamada/Elbehira/Egypt                        </p>
+                        <p class="mb-0 px-2"><span class="fw-bold text-success">Tele/Fax: </span>
+                            00204537765525                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 bg-white border p-4 pt-3 rounded-4 mx-auto shadow">
+                    <h6 class="p-2 fw-bold text-info-emphasis"><i class="fa-solid fa-location-dot text-primary"></i>&nbsp;
+                        ship To
+                    </h6>
+                    <div>
+                        <p class="px-2 fw-bold"><span style="border-bottom: 2px dotted darkred"
+                                title="Port of Delivery">POD</span>:
+                            Port John San francisco                        </p>
+                        <p class="mb-0 px-2"><span class="fw-bold text-primary">Consignee: </span>
+                            Haroun For Trading And Services                        </p>
+                        <p class="mb-0 px-2"><span class="fw-bold text-primary">Address: </span>
+                            Sadat City/Menofia/Egypt                        </p>
+                        <p class="mb-0 px-2"><span class="fw-bold text-primary">Tele/Fax: </span>
+                            0020482666729                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3 bg-white border p-4 pt-3 rounded-4 shadow">
+                    <h6 class="p-2 mb-3 fw-bold text-info-emphasis"><i class="fa-solid fa-calendar-days"></i>&nbsp; Pickup
+                        and Delivery
+                    </h6>
+                    <div>
+                        <p class="my-2 px-2"><span class="fw-bold"><i class="fa-solid fa-stopwatch text-success"></i>
+                            </span>
+                            2023-05-08 00:00:00                        </p>
+                        <p class="my-2 px-2"><span class="fw-bold"><i class="fa-solid fa-stopwatch text-primary"></i>
+                            </span>
+                            Not Delivered Yet                        </p>
+                        <p class="my-2s px-2"><span class="fw-bold" title="estimated time of arrival."
+                                style="border-bottom: 2px dotted darkred">ETA</span>
+                            Not Defined                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row gap-3 mx-auto my-3 ship-info">
+                <div class="col-md-4 bg-white border me-3 p-4 pt-3 rounded-4 shadow">
+                    <h6 class="p-2 mb-2 fw-bold text-warning-emphasis">References <i class="fa-solid fa-pen"></i></h6>
+                    <div>
+                        <p class="my-2 px-2"><span class="fw-bold">Master Tracking: </span>
+                                                    </p>
+                        <p class="my-2 px-2"><span class="fw-bold me-4">Bill of lading: </span>
+                            NKHJ546646476                        </p>
+                        <p class="my-2 px-2"><span class="fw-bold me-4">DHL Number: </span>
+                            HIPHP65746874                        </p>
+                        <p class="my-2 px-2"><span class="fw-bold me-4">Shipping Line: </span>
+                            DHL                        </p>
+                    </div>
+                </div>
+                <div class="col-md-7 bg-white border p-4 pt-3 rounded-4 shadow">
+                    <h6 class="p-2 mb-4 fw-bold text-primary-emphasis"><i class="fa-solid fa-clipboard-list"></i> Status
+                    </h6>
+                    <div>
+                        <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75"
+                             aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar progress-bar progress-bar-animated bg-info"
+                                 style="width: 40%"></div>
+                        </div>
+                        <div class="d-flex justify-content-between flex-md-row mt-5 position-relative">
+                            <div>
+                                <p class="fw-bold text-primary">Created</p>
+                                <p class="fw-bold text-success">2023-05-09</p>
+                            </div>
+                            <div>
+                                <p class="fw-bold text-primary ">Loaded</p>
+                                <p class="fw-bold text-success ">2023-05-08</p>
+                            </div>
+                            <div>
+                                <p class="fw-bold text-black-50 ">Arrived</p>
+                                <p class="fw-bold text-black-50 ">0000-00-00</p>
+                            </div>
+                            <div>
+                                <p class="fw-bold text-black-50 ">Delivered</p>
+                                <p class="fw-bold text-black-50 ">0000-00-00</p>
+                            </div>
+                            <div>
+                                <p class="fw-bold text-black-50 ">Invoiced</p>
+                                <p class="fw-bold text-black-50 ">0000-00-00</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row gap-3 ms-auto justify-content-evenly my-3 ship-info">
+                <div class="col-md-3 bg-white border p-4 pt-3 rounded-4 shadow">
+                    <h6 class="p-2 mb-3 fw-bold text-primary-emphasis">Shipping Info <i class="fa-solid fa-map"></i></h6>
+                    <div>
+                        <p class="my-2 px-2"><span class="fw-bold me-2">Ship. Office: </span>
+                            CMS                        </p>
+                        <p class="my-2 px-2"><span class="fw-bold me-2">Shipped By: </span>
+                            Sea                        </p>
+                        <p class="my-2 px-2"><span class="fw-bold me-2">Ship. Mode: </span>
+                            Export                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3 bg-white border p-4 pt-3 rounded-4 shadow">
+                    <h6 class="p-2 mb-3 fw-bold text-primary-emphasis">Additional info <i class="fa-solid fa-puzzle-piece"></i></h6>
+                    <div>
+                        <p class="my-2 px-2"><span class="fw-bold me-2">Relies Date: </span>
+                                                    </p>
+                        <p class="my-2 px-2"><span class="fw-bold me-2">Income Num: </span>
+                                                    </p>
+                        <p class="my-2 px-2"><span class="fw-bold me-2">Exchange Data: </span>
+                                                    </p>
+                    </div>
+                </div>
+                <div class="col-md-5 border p-4 pt-3 rounded-4 shadow bg-white">
+                    <h6 class="p-2 mb-3 fw-bold text-primary-emphasis">Postponements <i class="fa-solid fa-person-running"></i></h6>
+                    <div>
+                        <p class='text-success lead'>There are no postponements !!!</p>                    </div>
+                </div>
+            </div>
+            <div class="row mx-auto my-5 ship-info notes">
+                <div class="col-md-8 mx-auto h-25 row" id="notes">
+                                            <span class="col-md-1 mt-3" id="addNoteButton"><i class="fa-solid fa-circle-plus fa-bounce text-success fs-1"></i></span>
+                        <p class="bg-white col-md-8 p-3 bg-danger-subtle rounded-3 shadow lead">
+                            There is No notes for this Shipment
+                        </p>
+                    
+                </div>
+                <div class="col-md-4 bg-white shadow rounded-4 mx-auto d-flex">
+                    <div class="align-self-center text-center w-25">
+                        <i class="fa-solid fa-angles-left fa-beat text-danger fs-2 "></i>
+                    </div>
+                    <div>
+                    <h4 class="text-danger py-3 fw-bold">Notes </h4>
+                    <p class="lead">Those notes are created by the consignee about the shipment</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mx-auto ship-info items">
+                <h5 class="p-3 fw-bold bg-white border-top text-center mx-auto text-info-emphasis w-100">Items <i
+                        class="fa-solid fa-box-open"></i></h5>
+                                    <div class="col-md-4 bg-white border shadow rounded-start-4 rounded-end-pill mx-auto p-4 pt-3 align-self-center">
+                        <h6 class="fw-bold text-primary">
+                            Item 1                        </h6>
+                        <div>
+                            <p class="my-2 px-2"><span class="fw-bold text-warning-emphasis">Description :&nbsp;&nbsp; </span>
+                                Orange Fresh Valencha                            </p>
+                            <p class="my-2 px-2"><span class="fw-bold me-4 text-warning-emphasis">Quantity : </span>
+                                99900 kg                            </p>
+                            <p class="my-2 px-2"><span class="fw-bold text-warning-emphasis me-3">Prod Date:&nbsp;&nbsp; </span>
+                                05-2023                            </p>
+                            <p class="my-2 px-2"><span class="fw-bold text-warning-emphasis me-3">Price/Ton:&nbsp;&nbsp; </span>
+                                $450                            </p>
+                            <p class="my-2 px-2"><span class="fw-bold text-warning-emphasis me-3">On Pallets:&nbsp;&nbsp; </span>
+                                84                            </p>
+                            <p class="my-2 px-2"><span class="fw-bold text-warning-emphasis me-3">Total price:&nbsp;&nbsp; </span>
+                                $44955                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-8 bg-white mx-auto row shadow rounded-start-5 border py-4">
+                                                    <div class="col-md-5 mx-auto ms-5 mt-3">
+                                <h6 class="fw-bold text-success">
+                                    Package 1                                </h6>
+                                <p class="my-2 px-2"><span class="fw-bold text-warning-emphasis">Packages No. :&nbsp;&nbsp; </span>
+                                    5120 Carton                                </p>
+                                <p class="my-2 px-2"><span class="fw-bold me-4 text-primary-emphasis">Net Weight: </span>
+                                    15 Kg                                </p>
+                                <p class="my-2 px-2"><span class="fw-bold me-4 text-primary-emphasis">Total
+                                        NW:&nbsp;&nbsp;&nbsp;&nbsp; </span>
+                                    76800 Kg                                </p>
+                                <p class="my-2 px-2"><span class="fw-bold text-success-emphasis">Gross Weight:&nbsp;&nbsp; </span>
+                                    16 Kg                                </p>
+                                <p class="my-2 px-2"><span class="fw-bold text-success-emphasis me-4">Total GW:&nbsp;&nbsp;&nbsp;
+                                    </span>
+                                    81920 Kg                                </p>
+                            </div>
+                                                    <div class="col-md-5 mx-auto ms-5 mt-3">
+                                <h6 class="fw-bold text-success">
+                                    Package 2                                </h6>
+                                <p class="my-2 px-2"><span class="fw-bold text-warning-emphasis">Packages No. :&nbsp;&nbsp; </span>
+                                    3080 Carton                                </p>
+                                <p class="my-2 px-2"><span class="fw-bold me-4 text-primary-emphasis">Net Weight: </span>
+                                    7.5 Kg                                </p>
+                                <p class="my-2 px-2"><span class="fw-bold me-4 text-primary-emphasis">Total
+                                        NW:&nbsp;&nbsp;&nbsp;&nbsp; </span>
+                                    23100 Kg                                </p>
+                                <p class="my-2 px-2"><span class="fw-bold text-success-emphasis">Gross Weight:&nbsp;&nbsp; </span>
+                                    8 Kg                                </p>
+                                <p class="my-2 px-2"><span class="fw-bold text-success-emphasis me-4">Total GW:&nbsp;&nbsp;&nbsp;
+                                    </span>
+                                    24640 Kg                                </p>
+                            </div>
+                                            </div>
+
+                            </div>
+        </div>
+        <div class="tab-pane fade" id="documents-tab-pane" role="tabpanel" aria-labelledby="documents-tab" tabindex="0">
+            <div class="mx-0 w-100 bg-white border-bottom">
+                <h6 class="py-3 ps-1 fw-bold fs-5">Shipment Documents</h6>
+                <div class="row gap-2 my-2">
+                    <div class="col-md-2 mx-auto bof">
+                                                    <div class="card bg-white shadow" style="width: 18rem;">
+                                <div class="card-header">
+                                    <h5 class="text-center fw-bold">B/L: NKHJ546646476</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">B/L Date:  2023-05-09</p>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary" id="billShow" data-bs-toggle="modal" data-bs-target="#blmodal">
+                                        Show B/L
+                                    </button>
+                                </div>
+                            </div>
+                        <div class="showBL">
+                            <!-- Modal -->
+                            <div class="modal fade" id="blmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Bill Of Lading</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                                                                <div class="modal-body w-100 h-100" id="#bill">
+                                                                                    </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Understood</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+            <h5 class="bg-white text-bold fw-bold text-primary-emphasis ps-4 py-3">Invoices</h5>
+            <div class="border shadow bg-white p-3 pb-0" style="width: fit-content">
+                <p class="text-primary-emphasis lead">This shipments has <span class="text-danger">1</span> Invoice(s)</p>
+            </div>
+
+            <div class="invoice row mx-auto" id="invoice">
+                                                <div class="card col-md-5 mx-auto my-3 shadow">
+                    <div class="card-header">
+                        <p class="my-auto">Invoice No. 2A / 2023</p>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Orange Fresh Valencha</h5>
+                        <p class="card-text"><span class="text-primary me-3">Shipper: </span>Elfath for export and import</p>
+                        <p class="card-text"><span class="text-primary">Consignee: </span>Haroun For Trading And Services</p>
+                        <p class="card-text"><span class="text-primary">Quantity: </span>99900 Kg</p>
+                        <button type="button" class="btn btn-outline-primary rounded-1" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                            Invoice Details
+                        </button>
+                    </div>
+                    <div class="card-footer text-muted">
+                        5 hours  ago                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 text-primary-emphasis" id="exampleModalLabel">Orange Fresh Valencha</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body border" id="printable">
+                                    <div class="d-flex justify-content-between" id="invoice-print">
+                                        <div class="fw-bold p-3 ms-2">
+                                            <p class="fw-bold mb-0">Elfath for Import and Export</p>
+                                            <p class="fw-bold mb-0">Registeration no. 7712</p>
+                                            <p class="fw-bold mb-0">Vat no. 393-2111-282</p>
+                                        </div>
+                                        <div class="ps-5">
+                                            <img src="../resources/images/img.png" class="p-3" loading="lazy" alt="Logo" style="width: 100px; height: 90px">
+                                        </div>
+                                    </div>
+                                    <h5 class="text-center fw-bold text-decoration-underline">
+                                        Invoice No. <span class="fw-lighter">2A/2023</span>
+                                    </h5>
+                                    <div class="row ms-5 mt-4">
+                                        <h6><span class="fw-bold lead mb-3">Date: </span> 09-05-2023</h6>
+                                        <h6 class="mb-0"><span class="fw-bold lead">Shipper: </span> Elfath for export and import</h6>
+                                        <p class="mb-0"><span class="lead">Address: </span> Netma/Kom Hamada/Elbehira/Egypt</p>
+                                        <p class="mb-0"><span class="lead">Tele/Fax: </span> 00204537765525</p>
+                                        <p class="mb-2"><span class="lead">Registration Number: </span> 1122</p>
+                                    </div>
+                                    <div class="row ms-5 mt-1">
+                                        <h6 class="mb-0"><span class="fw-bold lead">Consignee: </span> Haroun For Trading And Services</h6>
+                                        <p class="mb-2"><span class="lead">Address: </span> Sadat City/Menofia/Egypt</p>
+                                    </div>
+                                    <div class="row mx-3">
+                                        <table class="table table-hover table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">Quantity</th>
+                                                <th scope="col">Price/Ton</th>
+                                                <th scope="col">Prod. Date</th>
+                                                <th scope="col">No. Of Packages</th>
+                                                <th scope="col">N.W Carton</th>
+                                                <th scope="col">G.W Carton</th>
+                                                <th scope="col">Lot Num</th>
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td class="text-wrap" rowspan="3">
+                                                    99900 Kg of Orange Fresh Valencha                                                </td>
+                                                <td rowspan="3;">
+                                                    $450                                                </td>
+                                                <td rowspan="3">
+                                                    05/2023                                                </td>
+                                            </tr>
+                                                                                                                                                                                <tr>
+                                                    <td>5120 Carton</td>
+                                                    <td>
+                                                        15 Kg                                                    </td>
+                                                    <td>
+                                                        16 Kg                                                    </td>
+                                                    <td>48</td>
+                                            </tr>
+                                                                                                                                    <tr>
+                                                    <td>3080 Carton</td>
+                                                    <td>
+                                                        7.5 Kg                                                    </td>
+                                                    <td>
+                                                        8 Kg                                                    </td>
+                                                    <td>49</td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <th scope="col">Total</th>
+                                                <td>
+                                                    $44955                                                </td>
+                                                <td></td>
+                                                <td>
+                                                    8200 Carton                                                </td>
+                                                <td>
+                                                    99900                                                </td>
+                                                <td>
+                                                    106560                                                </td>
+                                                <td></td>
+
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="row">
+                                        <p class="text-center">
+                                            Forty  four  thousand   nine hundred  and fifty  five dollars                                        </p>
+                                    </div>
+                                    <div class="ms-5 mb-5">
+                                        <p class="mb-0"><span class="fw-bold">Shipment By: </span>Sea</p>
+                                        <p class="mb-0"><span class="fw-bold">POL: </span>Port Foad Egypt</p>
+                                        <p><span class="fw-bold">POD: </span>Port John San francisco</p>
+                                    </div>
+                                    <div class="mt-5 w-25 mx-auto text-nowrap">
+                                        <p class="mb-0">ElFath for Import and Export</p>
+                                        <p class="mb-0"><span class="fw-bold">Address: </span>Netma – Kom hamada – Elbhera – EGYPT</p>
+                                        <p class="mb-0"><span class="fw-bold">Website: </span><a href="https://elfath-import-export.com/" target="_blank">elfath-import-export.com</a></p>
+                                        <p class="mb-0"><span class="fw-bold">Mail: </span><a href="mailto:Elfathimportexport@yahoo.com">Elfathimportexport@yahoo.com</a></p>
+                                        <p class="mb-0"><span class="fw-bold">Mail: </span><a href="mailto:info@elfath-import-export.com">info@elfath-import-export.com</a></p>
+                                        <p class="mb-0"><span class="fw-bold">Facebook: </span><a href="https://www.facebook.com/Elfathimportexport" target="_blank">Elfath import & export</a></p>
+                                        <p class="mb-0"><span class="fw-bold">WhatsApp: </span>+201145288886 - +201142588880</p>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-primary rounded-1" id="print">
+                                        Print Form
+                                    </button>
+                                </div>
+                                <div id="hidden-print-div"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                            </div>
+        </div>
+    </div>
+<script src="../resources/js/pdfobject.min.js"></script>
+<script>PDFObject.embed("/framework/configs/../documents//shipment_79_1683620449/Elfath - Details.pdf", "#bill");</script>
+
+            </div>
+        </main>
+                <script src="../../resources/js/bootstrap.bundle.js"></script>
+        <script src="../../resources/js/all.min.js"></script>
+        <script src="../../resources/js/jquery.js"></script>
+        <script src="../../resources/js/pdfmake.min.js"></script>
+        <script src="../../resources/js/vfs_fonts.js"></script>
+        <script src="../../resources/js/datatables.min.js"></script>
+        <script src="../../resources/js/script.js"></script>
+        <script src="../../resources/js/ajax.js"></script>
+        <script src="../../resources/js/printThis.js"></script>
+</body>
+
+</html>

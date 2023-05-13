@@ -1,5 +1,10 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
-    background-color: whitesmoke !important;
+    background-color: #eeeeee;
+    font-family: 'Open Sans', sans-serif;
 }
 
 table {
@@ -8,4 +13,88 @@ table {
 
 .logo {
     width: 30px;
+}
+
+.data_table {
+    background-color: #fff;
+    padding: 15px;
+    box-shadow: 1px 3px 5px #aaa;
+    border-radius: 5px;
+}
+
+.data_table .btn {
+    padding: 5px 10px;
+    margin: 10px 3px 10px;
+}
+
+.data_table .btn:first-of-type {
+    background-color: #10793F;
+}
+
+.data_table .btn:first-of-type::after {
+    font-family: "Font Awesome 5 Free", serif;
+    content: " \f1c3";
+}
+
+.data_table .btn:nth-of-type(2) {
+    background-color: #c40f02;
+}
+
+.data_table .btn:nth-of-type(2)::after {
+    font-family: "Font Awesome 5 Free", serif;
+    content: " \f1c1";
+}
+
+.data_table .btn:nth-of-type(3) {
+    background-color: #0a53be;
+}
+
+.data_table .btn:nth-of-type(3)::after {
+    font-family: "Font Awesome 5 Free", serif;
+    content: " \f1c4";
+}
+
+.data_table table thead {
+    background-color: #2b2f32;
+    color: whitesmoke;
+}
+
+form {
+    font-size: .96rem;
+}
+
+#ship-tab {
+    font-size: .9rem;
+    font-weight: bold;
+}
+
+.ship-info {
+    font-size: .9rem;
+}
+
+.status {
+    display: inline-block;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    position: absolute;
+    top: 31%;
+    transform: translateY(-30%);
+    left: 5%;
+}
+
+.status:nth-of-type(2) {
+    left: 22.5%;
+}
+
+.status:nth-of-type(3) {
+    left: 45%;
+}
+
+.status:nth-of-type(4) {
+    left: 67.5%;
+}
+
+.status:nth-of-type(5) {
+    left: 88%;
 }

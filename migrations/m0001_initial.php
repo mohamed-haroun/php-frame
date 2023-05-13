@@ -29,14 +29,15 @@ return new class
     {
         $this->connection->executeQuery("
                                 create table users(
-                                user_id int unsigned serial default value,
+                                id int unsigned serial default value,
                                 first_name varchar(100) not null,
                                 last_name varchar(100) not null,
                                 email varchar(255) not null unique,
-                                user_password varchar(255) not null,
+                                pass varchar(255) not null,
+                                profile_pic varchar(255) null,
                                 created_at datetime not null default current_timestamp
                                 );
-        ");
+alter table shipments add constraint foreign key(created_by) references users(id) on update cascade on delete set null;        ");
     }
 
     public function down()

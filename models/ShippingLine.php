@@ -2,15 +2,17 @@
 declare(strict_types=1);
 namespace models;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
-use Doctrine\ORM\Mapping\OneToOne;
+use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\Table;
 
 #[Entity]
-#[Table(name: 'shipping_line')]
+#[Table(name: 'shippingLine')]
 class ShippingLine
 {
     #[Id]
@@ -21,6 +23,10 @@ class ShippingLine
     #[Column(name: 'tracking_path')]
     private string $trackingPath;
 
+
+    public function __construct()
+    {
+    }
 
     public function getId(): int
     {
@@ -48,6 +54,5 @@ class ShippingLine
         $this->trackingPath = $trackingPath;
         return $this;
     }
-
 
 }

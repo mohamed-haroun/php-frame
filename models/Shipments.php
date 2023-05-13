@@ -2,6 +2,7 @@
 declare(strict_types=1);
 namespace models;
 
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -30,30 +31,36 @@ class Shipments
     #[Column(name: 'shipped_by')]
     private string $shippedBy;
     #[Column(name: 'tracking_number')]
-    private string $trackingNumber;
-    #[Column('lot_number')]
-    private string $lotNumber;
+    private ?string $trackingNumber;
     #[Column]
     private string $dhl;
     #[Column]
     private string $pol;
     #[Column]
     private string $pod;
+    #[Column(name: 'relies_date', type: Types::DATETIME_MUTABLE)]
+    private ?DateTime $reliesDate;
+    #[Column(name: 'incoming_number')]
+    private ?string $incomingNumber;
+    #[Column(name: 'exchange_data')]
+    private ?string $exchangeData;
+    #[Column(type: Types::BOOLEAN)]
+    private ?bool $documented;
     #[Column(name: 'shipment_office')]
     private string $shipmentOffice;
     #[Column(name: 'shipment_mode', enumType: ShipmentMode::class)]
     private ShipmentMode $shipmentMode;
     #[Column(name: 'created_at', type: Types::DATETIME_MUTABLE)]
-    private \DateTime $createdAt;
+    private DateTime $createdAt;
     #[Column(name: 'created_by')]
     private int $createdBy;
-    #[Column(name: 'shipping_line_id')]
+    #[Column(name: 'shippingLine_id')]
     private int $shippingLineId;
 
     #[OneToOne(mappedBy: 'shipments',targetEntity: Policies::class, cascade: ['persist', 'remove'])]
-    private Policies $policies;
-
-
+    private ?Policies $policies;
+    #[OneToOne(mappedBy: 'shipments',targetEntity: Certificate::class, cascade: ['persist', 'remove'])]
+    private ?Certificate $certificate;
 
     #[OneToMany(mappedBy: 'shipments', targetEntity: Documents::class, cascade: ['persist', 'remove'])]
     private Collection|null $documents;
@@ -125,28 +132,6 @@ class Shipments
         return $this;
     }
 
-    public function getTrackingNumber(): string
-    {
-        return $this->trackingNumber;
-    }
-
-    public function setTrackingNumber(string $trackingNumber): Shipments
-    {
-        $this->trackingNumber = $trackingNumber;
-        return $this;
-    }
-
-    public function getLotNumber(): string
-    {
-        return $this->lotNumber;
-    }
-
-    public function setLotNumber(string $lotNumber): Shipments
-    {
-        $this->lotNumber = $lotNumber;
-        return $this;
-    }
-
     public function getPol(): string
     {
         return $this->pol;
@@ -191,12 +176,12 @@ class Shipments
         return $this;
     }
 
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): DateTime
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTime $createdAt): Shipments
+    public function setCreatedAt(DateTime $createdAt): Shipments
     {
         $this->createdAt = $createdAt;
         return $this;
@@ -213,16 +198,7 @@ class Shipments
         return $this;
     }
 
-    public function getShippingLineId(): int
-    {
-        return $this->shippingLineId;
-    }
 
-    public function setShippingLineId(int $shippingLineId): Shipments
-    {
-        $this->shippingLineId = $shippingLineId;
-        return $this;
-    }
 
     public function getDhl(): string
     {
@@ -234,8 +210,6 @@ class Shipments
         $this->dhl = $dhl;
         return $this;
     }
-
-
 
     public function getDocuments(): ?Collection
     {
@@ -270,14 +244,80 @@ class Shipments
         return $this;
     }
 
-    public function getPolicies(): Policies
+    public function getPolicies(): ?Policies
     {
         return $this->policies;
     }
 
-    public function setPolicies(Policies $policies): Shipments
+    public function setPolicies(?Policies $policies): Shipments
     {
         $this->policies = $policies;
+        return $this;
+    }
+
+    public function getTrackingNumber(): ?string
+    {
+        return $this->trackingNumber;
+    }
+
+    public function setTrackingNumber(?string $trackingNumber): Shipments
+    {
+        $this->trackingNumber = $trackingNumber;
+        return $this;
+    }
+
+    public function getReliesDate(): ?DateTime
+    {
+        return $this->reliesDate;
+    }
+
+    public function setReliesDate(?DateTime $reliesDate): Shipments
+    {
+        $this->reliesDate = $reliesDate;
+        return $this;
+    }
+
+    public function getIncomingNumber(): ?string
+    {
+        return $this->incomingNumber;
+    }
+
+    public function setIncomingNumber(?string $incomingNumber): Shipments
+    {
+        $this->incomingNumber = $incomingNumber;
+        return $this;
+    }
+
+    public function getExchangeData(): ?string
+    {
+        return $this->exchangeData;
+    }
+
+    public function setExchangeData(?string $exchangeData): Shipments
+    {
+        $this->exchangeData = $exchangeData;
+        return $this;
+    }
+
+    public function getDocumented(): ?bool
+    {
+        return $this->documented;
+    }
+
+    public function setDocumented(?bool $documented): Shipments
+    {
+        $this->documented = $documented;
+        return $this;
+    }
+
+    public function getCertificate(): ?Certificate
+    {
+        return $this->certificate;
+    }
+
+    public function setCertificate(?Certificate $certificate): Shipments
+    {
+        $this->certificate = $certificate;
         return $this;
     }
 
@@ -300,6 +340,17 @@ class Shipments
     public function setStatues(?Collection $statues): Shipments
     {
         $this->statues = $statues;
+        return $this;
+    }
+
+    public function getShippingLineId(): int
+    {
+        return $this->shippingLineId;
+    }
+
+    public function setShippingLineId(int $shippingLineId): Shipments
+    {
+        $this->shippingLineId = $shippingLineId;
         return $this;
     }
 

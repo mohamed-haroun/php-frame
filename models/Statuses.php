@@ -22,8 +22,8 @@ class Statuses
     private ShipmentStatus $shipmentStatus;
     #[Column(name: 'status_date', type: Types::DATETIME_MUTABLE)]
     private \DateTime $statusDate;
-    #[Column(name: 'shipment_id')]
-    private int $shipmentId;
+    #[Column(name: 'shipments_id')]
+    private int $shipmentsId;
 
     #[ManyToOne(inversedBy: 'statuses')]
     private Shipments $shipments;
@@ -58,14 +58,14 @@ class Statuses
         return $this;
     }
 
-    public function getShipmentId(): int
+    public function getShipmentsId(): int
     {
-        return $this->shipmentId;
+        return $this->shipmentsId;
     }
 
-    public function setShipmentId(int $shipmentId): Statuses
+    public function setShipmentsId(int $shipmentsId): Statuses
     {
-        $this->shipmentId = $shipmentId;
+        $this->shipmentsId = $shipmentsId;
         return $this;
     }
 

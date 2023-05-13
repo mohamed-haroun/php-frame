@@ -22,7 +22,7 @@ if (isset($_SESSION['user_register'])) {
         <div class="mb-4">
             <h3 class="text-center fw-bold py-4 border-bottom mb-3">Sign<span class="text-primary"> Up</span></h3>
         </div>
-        <form method="post" action="/register">
+        <form method="post" action="/user/register">
             <div class="row mb-3">
                 <div class="col">
                     <label for="first_name" class="form-label">First Name</label>
@@ -107,6 +107,6 @@ if (isset($_SESSION['user_register'])) {
             </div>
             <button type="submit" class="btn btn-primary w-100 fw-bold">Sign Up</button>
         </form>
-        <p class="text-center mt-5 mb-0">Already have an account ? <a href="/login" class="text-primary fw-bold">Login</a></p>
+        <p class="text-center mt-5 mb-0">Already have an account ? <a href="/user/login" class="text-primary fw-bold">Login</a></p>
     </div>
 </div>

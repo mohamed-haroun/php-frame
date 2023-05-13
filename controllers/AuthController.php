@@ -14,10 +14,9 @@ class AuthController extends Controller
         private readonly Response $response,
         private readonly UserModel $userModel,
         private readonly SessionHandlerMiddleware $handlerMiddleware
-    )
-    {
+    ) {
         if (isset($_SESSION['user'])) {
-            $this->response->redirect('/profile');
+            $this->response->redirect('/user/profile');
         }
     }
     public function loginView(): void
@@ -49,10 +48,10 @@ class AuthController extends Controller
             $value = $this->userModel->getUser($data['email'], $data['password']);
             if ($value instanceof UserModel) {
                 $_SESSION['user'] = serialize($this->userModel);
-                $this->response->redirect('/dashboard');
+                $this->response->redirect('/shipments/overview');
             } else {
                 $_SESSION['data'] = $data;
-                if ($value=='password') {
+                if ($value == 'password') {
                     $_SESSION['password_message'] = "Password is not correct";
                 } else {
                     $_SESSION['email_message'] = "User is not found";
@@ -68,7 +67,7 @@ class AuthController extends Controller
         if ($this->userModel->validateData()) {
             $saved = $this->userModel->save();
             if ($saved) {
-                $this->response->redirect('/profile');
+                $this->response->redirect('/user/profile');
             }
         } else {
             $this->userModel->pass = '';

@@ -26,11 +26,23 @@ class UserController extends Controller
         $this->render($view, $layout, $args);
     }
 
+    public function settings(): void
+    {
+        $view = 'settings';
+        $layout = 'main';
+        $args = [
+            "{{page_title}}" => "user/settings",
+            "{{user}}" => $this->user->first_name ?? 'user'
+        ];
+        $this->render($view, $layout, $args);
+    }
+
     public function logout(): void
     {
         unset($_SESSION['user']);
         unset($_SESSION['logged']);
         unset($_SESSION['newShipment']);
-        $this->response->redirect('/login');
+        $this->response->redirect('/user/login');
     }
+
 }

@@ -7,12 +7,12 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 $configs =  [
-                  'host'      => $_ENV['DB_HOST'],
-                  'user'      => $_ENV['DB_USER'],
-                  'password'  => $_ENV['DB_PASSWORD'],
-                  'database'  => $_ENV['DB_NAME'],
-                  'driver'    => $_ENV['DRIVER'] ?? 'pdo_mysql'
-             ];
+    'dbname'            => $_ENV['DB_NAME'],
+    'user'              => $_ENV['DB_USER'],
+    'password'          => $_ENV['DB_PASSWORD'],
+    'host'              => $_ENV['DB_HOST'],
+    'driver'            => $_ENV['DRIVER'],
+];
 
 $db = new DB($configs);
 $db->applyMigrations();

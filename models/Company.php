@@ -25,7 +25,7 @@ class Company
     #[Column(name: 'tele_fax')]
     private string $teleFax;
     #[Column(name: 'registration_number')]
-    private int $registrationNumber;
+    private string $registrationNumber;
     #[Column(name: 'vat_number')]
     private string $vatNumber;
 
@@ -101,26 +101,24 @@ class Company
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getRegistrationNumber(): int
+    public function getRegistrationNumber(): string
     {
         return $this->registrationNumber;
     }
 
     /**
-     * @param int $registrationNumber
+     * @param string $registrationNumber
      * @return Company
      */
-    public function setRegistrationNumber(int $registrationNumber): Company
+    public function setRegistrationNumber(string $registrationNumber): Company
     {
         $this->registrationNumber = $registrationNumber;
         return $this;
     }
 
-    /**
-     * @return string
-     */
+
     public function getVatNumber(): string
     {
         return $this->vatNumber;

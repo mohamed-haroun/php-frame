@@ -18,7 +18,7 @@ class Invoices
     #[Column, GeneratedValue]
     private int $id;
     #[Column(name: 'invoice_number')]
-    private int $invoiceNumber;
+    private string $invoiceNumber;
     #[Column(name: 'invoice_date', type: Types::DATETIME_MUTABLE)]
     private \DateTime $invoiceDate;
     #[Column(name: 'items_id')]
@@ -32,19 +32,6 @@ class Invoices
         return $this->id;
     }
 
-    public function getInvoiceNumber(): int
-    {
-        return $this->invoiceNumber;
-    }
-
-    public function setInvoiceNumber(int $invoiceNumber): Invoices
-    {
-        $this->invoiceNumber = $invoiceNumber;
-        return $this;
-    }
-
-
-
     public function getInvoiceDate(): \DateTime
     {
         return $this->invoiceDate;
@@ -53,6 +40,17 @@ class Invoices
     public function setInvoiceDate(\DateTime $invoiceDate): Invoices
     {
         $this->invoiceDate = $invoiceDate;
+        return $this;
+    }
+
+    public function getInvoiceNumber(): string
+    {
+        return $this->invoiceNumber;
+    }
+
+    public function setInvoiceNumber(string $invoiceNumber): Invoices
+    {
+        $this->invoiceNumber = $invoiceNumber;
         return $this;
     }
 

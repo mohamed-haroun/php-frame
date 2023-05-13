@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\Table;
 
 #[Entity]
-#[Table]
+#[Table(name: 'notes')]
 class Notes
 {
     #[Id]
@@ -20,8 +20,8 @@ class Notes
     private string $note;
     #[Column(name: 'created_at', type: Types::DATETIME_MUTABLE)]
     private \DateTime $createdAt;
-    #[Column(name: 'shipment_id')]
-    private int $shipmentId;
+    #[Column(name: 'shipments_id')]
+    private int $shipmentsId;
 
     #[ManyToOne(inversedBy: 'notes')]
     private Shipments $shipments;
@@ -55,14 +55,14 @@ class Notes
         return $this;
     }
 
-    public function getShipmentId(): int
+    public function getShipmentsId(): int
     {
-        return $this->shipmentId;
+        return $this->shipmentsId;
     }
 
-    public function setShipmentId(int $shipmentId): Notes
+    public function setShipmentsId(int $shipmentsId): Notes
     {
-        $this->shipmentId = $shipmentId;
+        $this->shipmentsId = $shipmentsId;
         return $this;
     }
 
